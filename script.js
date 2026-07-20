@@ -1,46 +1,3 @@
-const strategyDb = {
-    "axe": {
-        skills: "Berserker's Call, Battle Hunger, Counter Helix, Culling Blade.",
-        synergy: "Dazzle, Invoker, Dark Seer.",
-        counters: ["Outworld Destroyer", "Viper", "Necrophos"],
-        counters_desc: "Outworld Destroyer (Astral saat Axe Call), Viper (Break pasif Helix), Necrophos (Reaper's Scythe).",
-        items: ["euls_scepter", "silver_edge", "spirit_vessel"],
-        items_desc: "Eul's Scepter (Hentikan Axe saat Call), Silver Edge (Matikan pasif Helix), Spirit Vessel."
-    },
-    "phantom assassin": {
-        skills: "Stifling Dagger, Phantom Strike, Blur, Fan of Knives, Coup de Grace.",
-        synergy: "Magnus, Crystal Maiden, Omniknight.",
-        counters: ["Razor", "Axe", "Timbersaw"],
-        counters_desc: "Razor (Static Link curi damage), Axe (Call menembus Blur), Timbersaw (Burst magic tinggi).",
-        items: ["monkey_king_bar", "ghost", "blade_mail"],
-        items_desc: "Monkey King Bar (Bypass Miss Blur), Ghost Scepter (Anti Physical), Blade Mail."
-    },
-    "anti-mage": {
-        skills: "Mana Break, Blink, Counterspell, Mana Void.",
-        synergy: "Magnus, Grimstroke, Lion.",
-        counters: ["Legion Commander", "Meepo", "Disruptor"],
-        counters_desc: "Legion Commander (Duel langsung kunci Blink), Meepo (Earthbind mengunci Blink), Disruptor (Static Storm + Glimpse).",
-        items: ["orchid", "bloodthorn", "sheepstick"],
-        items_desc: "Orchid Malevolence / Bloodthorn (Silence agar tidak bisa Blink), Scythe of Vyse / Sheepstick (Hex instan)."
-    },
-    "invoker": {
-        skills: "Quas, Wex, Exort, Invoke (10 Kombinasi Kombinasi Skill Aktif).",
-        synergy: "Faceless Void, Tidehunter, Enigma.",
-        counters: ["Nyx Assassin", "Anti-Mage", "Viper"],
-        counters_desc: "Nyx Assassin (Mana Burn & Spiked Carapace), Anti-Mage (Mana Void sakit saat mana Invoker sekarat), Viper.",
-        items: ["black_king_bar", "pipe", "orchid"],
-        items_desc: "Black King Bar (BKB memblokir semua burst magic), Pipe of Insight, Orchid Malevolence."
-    },
-    "night stalker": {
-        skills: "Void, Crippling Fear, Hunter in the Night, Dark Ascension.",
-        synergy: "Dark Seer, Keeper of the Light, Bounty Hunter.",
-        counters: ["Slark", "Bloodseeker", "Timbersaw"],
-        counters_desc: "Slark (Bisa meloloskan diri dengan Pounce/Ulti saat malam), Bloodseeker (Thirst mendeteksi NS), Timbersaw (Pure burst damage tinggi).",
-        items: ["force_staff", "ghost", "heaven_halberd"],
-        items_desc: "Force Staff (Kabur dari area Crippling Fear), Ghost Scepter (Hindari serangan fisik malam hari), Heaven's Halberd."
-    }
-};
-
 const heroAlias = {
     "pa": "phantom assassin", "am": "anti-mage", "ns": "night stalker",
     "sk": "sand king", "es": "earthshaker", "od": "outworld destroyer"
@@ -60,8 +17,13 @@ async function searchHero() {
     if (heroAlias[query]) query = heroAlias[query];
 
     try {
-        const response = await fetch('https://api.opendota.com/api/heroStats');
-        const heroes = await response.json();
+        // Ambil data statistik dari OpenDota API
+        const responseOpendota = await fetch('https://api.opendota.com/api/heroStats');
+        const heroes = await responseOpendota.json();
+        
+        // Ambil data strategi mendetail dari file JSON eksternal kita
+        const responseStrategy = await fetch('dota_strategy.json');
+        const localDb = await responseStrategy.json();
         
         const hero = heroes.find(h => h.localized_name.toLowerCase() === query);
 
@@ -110,10 +72,11 @@ async function searchHero() {
                 }
             });
 
-            // --- LOGIKA STRATEGI OTOMATIS BERDASARKAN ATRIBUT JIKA BELUM DI INPUT ---
-            let strategy = strategyDb[query];
+            // --- AMBIL DATA DARI JSON ATAU JALANKAN GENERATOR OTOMATIS ---
+            let strategy = localDb[query];
             
             if (!strategy) {
+                // Generator Cadangan Otomatis Berdasarkan Atribut jika di JSON belum ditulis
                 if (isAgi) {
                     strategy = {
                         skills: `Hero berbasis Agility dengan tipe damage serangan ${hero.attack_type}.`,
@@ -175,10 +138,10 @@ async function searchHero() {
             });
 
         } else {
-            alert("Hero tidak ditemukan! Gunakan ejaan resmi Inggris (Misal: Night Stalker, Shadow Fiend).");
+            alert("Hero tidak ditemukan! Gunakan ejaan resmi Inggris.");
         }
     } catch (error) {
         console.error(error);
-        alert("Gagal memuat data.");
+        alert("Gagal memuat data strategi.");
     }
 }
