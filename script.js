@@ -72,40 +72,47 @@ async function searchHero() {
                 }
             });
 
-            // --- AMBIL DATA DARI JSON ATAU JALANKAN GENERATOR OTOMATIS ---
+           // --- AMBIL DATA DARI JSON ATAU JALANKAN GENERATOR OTOMATIS ---
             let strategy = localDb[query];
             
             if (!strategy) {
-                // Generator Cadangan Otomatis Berdasarkan Atribut jika di JSON belum ditulis
+                // Generator Cadangan Otomatis Berbasis Atribut & Tipe Serangan yang Lebih Dinamis
+                let baseCounters = [];
+                let baseItems = [];
+                let countersDesc = "";
+                let itemsDesc = "";
+
                 if (isAgi) {
-                    strategy = {
-                        skills: `Hero berbasis Agility dengan tipe damage serangan ${hero.attack_type}.`,
-                        synergy: "Hero dengan Buff Physical Damage (Magnus, Vengeful Spirit) atau heavy stunner.",
-                        counters: ["Axe", "Razor", "Lion"],
-                        counters_desc: "Hero disabilitas instan (Lion Hex) atau perusak armor dan pencuri physical damage (Razor).",
-                        items: ["ghost", "blade_mail", "monkey_king_bar"],
-                        items_desc: "Ghost Scepter (Kebal serangan fisik), Blade Mail (Pantulkan burst damage), MKB jika musuh memiliki evasion."
-                    };
+                    baseCounters = ["Axe", "Razor", "Slardar"];
+                    baseItems = ["ghost", "blade_mail", "monkey_king_bar"];
+                    countersDesc = `Hero berkemampuan Armor tinggi (Axe/Slardar) atau perusak physical damage (Razor Link) sangat kuat melawan ${hero.localized_name}.`;
+                    itemsDesc = "Ghost Scepter (Kebal serangan fisik), Blade Mail (Pantulkan physical burst), MKB (Jika musuh membeli Evasion).";
                 } else if (isInt) {
-                    strategy = {
-                        skills: `Hero berbasis Intelligence dengan tipe output serangan ${hero.attack_type}.`,
-                        synergy: "Hero tank garis depan pelindung area belakang (Axe, Centaur, Tidehunter).",
-                        counters: ["Anti-Mage", "Nyx Assassin", "Silencer"],
-                        counters_desc: "Anti-Mage (Mana Void instan kill), Nyx (Mana Burn konstan), Silencer (Mencegah pengeluaran spell combo).",
-                        items: ["black_king_bar", "orchid", "glimmer_cape"],
-                        items_desc: "Black King Bar (Mencegah kuncian spell magic), Orchid (Silence musuh sebelum bergerak), Glimmer Cape."
-                    };
+                    baseCounters = ["Anti-Mage", "Nyx Assassin", "Silencer"];
+                    baseItems = ["black_king_bar", "orchid", "glimmer_cape"];
+                    countersDesc = `Hero dengan kemampuan anti-mana (Anti-Mage/Nyx Burn) atau Silence jangka panjang (Silencer) akan mematikan rotasi spell ${hero.localized_name}.`;
+                    itemsDesc = "Black King Bar (Mencegah kuncian spell magic), Orchid (Silence musuh sebelum bergerak), Glimmer Cape (Meredam magic burst).";
+                } else if (isStr) {
+                    baseCounters = ["Necrophos", "Timbersaw", "Lifestealer"];
+                    baseItems = ["spirit_vessel", "silver_edge", "skadi"];
+                    countersDesc = `Hero berbasis persentase HP (Necrophos Scythe/Lifestealer Feast) serta perusak stat Strength (Timbersaw) adalah counter alami ${hero.localized_name}.`;
+                    itemsDesc = "Spirit Vessel (Mengurangi regresi HP tebal), Silver Edge (Mematikan pasif pertahanan), Eye of Skadi (Meredam lifesteal/regen).";
                 } else {
-                    strategy = {
-                        skills: `Hero bertipe Strength / Universal dengan tipe serangan ${hero.attack_type}.`,
-                        synergy: "Hero Crowd Control area luas penunjang follow-up hit (Faceless Void, Enigma).",
-                        counters: ["Necrophos", "Timbersaw", "Slark"],
-                        counters_desc: "Necrophos (Scythe pemotong HP tebal), Timbersaw (Pure damage penghancur Armor Strength), Slark (Pencuri stat).",
-                        items: ["spirit_vessel", "silver_edge", "skadi"],
-                        items_desc: "Spirit Vessel (Mengurangi regenerasi HP tebal), Silver Edge (Mematikan kemampuan pasif pertahanan), Eye of Skadi."
-                    };
+                    // Universal / Fallback Umum
+                    baseCounters = ["Doom", "Faceless Void", "Enigma"];
+                    baseItems = ["black_king_bar", "aeon_disk", "scythe_of_vyse"];
+                    countersDesc = `Hero dengan disabilitas mutlak (Doom/Chronosphere) adalah pilihan terbaik untuk mengunci pergerakan fleksibel hero Universal ini.`;
+                    itemsDesc = "Black King Bar (Proteksi standar), Aeon Disk (Menahan inisiasi kejut), Scythe of Vyse (Hex instan).";
                 }
-            }
+
+                strategy = {
+                    skills: `Hero berbasis ${attrName} dengan tipe output serangan ${hero.attack_type}. Data taktis spesifik patch belum terdaftar di JSON.`,
+                    synergy: "Hero inisiator lini depan (Axe/Centaur) atau pemberi buff disabilitas area.",
+                    counters: baseCounters,
+                    counters_desc: countersDesc,
+                    items: baseItems,
+                    items_desc: itemsDesc
+                };
 
             document.getElementById('heroSkills').innerText = strategy.skills;
             document.getElementById('heroSynergy').innerText = strategy.synergy;
