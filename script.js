@@ -1,4 +1,3 @@
-// 1. Database Strategi Manual (Untuk counter yang sangat spesifik)
 const strategyDb = {
     "axe": {
         skills: "Berserker's Call, Battle Hunger, Counter Helix, Culling Blade.",
@@ -25,19 +24,26 @@ const strategyDb = {
         items_desc: "Orchid Malevolence / Bloodthorn (Silence agar tidak bisa Blink), Scythe of Vyse / Sheepstick (Hex instan)."
     },
     "invoker": {
-        skills: "Quas, Wex, Exort, Invoke (10 Kombinasi Skill aktif).",
+        skills: "Quas, Wex, Exort, Invoke (10 Kombinasi Kombinasi Skill Aktif).",
         synergy: "Faceless Void, Tidehunter, Enigma.",
         counters: ["Nyx Assassin", "Anti-Mage", "Viper"],
         counters_desc: "Nyx Assassin (Mana Burn & Spiked Carapace), Anti-Mage (Mana Void sakit saat mana Invoker sekarat), Viper.",
         items: ["black_king_bar", "pipe", "orchid"],
         items_desc: "Black King Bar (BKB memblokir semua burst magic), Pipe of Insight, Orchid Malevolence."
+    },
+    "night stalker": {
+        skills: "Void, Crippling Fear, Hunter in the Night, Dark Ascension.",
+        synergy: "Dark Seer, Keeper of the Light, Bounty Hunter.",
+        counters: ["Slark", "Bloodseeker", "Timbersaw"],
+        counters_desc: "Slark (Bisa meloloskan diri dengan Pounce/Ulti saat malam), Bloodseeker (Thirst mendeteksi NS), Timbersaw (Pure burst damage tinggi).",
+        items: ["force_staff", "ghost", "heaven_halberd"],
+        items_desc: "Force Staff (Kabur dari area Crippling Fear), Ghost Scepter (Hindari serangan fisik malam hari), Heaven's Halberd."
     }
 };
 
 const heroAlias = {
-    "pa": "phantom assassin", "am": "anti-mage", "sk": "sand king", 
-    "es": "earthshaker", "od": "outworld destroyer", "qop": "queen of pain",
-    "pl": "phantom lancer", "ck": "chaos knight", "jug": "juggernaut"
+    "pa": "phantom assassin", "am": "anti-mage", "ns": "night stalker",
+    "sk": "sand king", "es": "earthshaker", "od": "outworld destroyer"
 };
 
 let myChart = null;
@@ -86,65 +92,64 @@ async function searchHero() {
                 data: {
                     labels: rankLabels,
                     datasets: [{
-                        label: 'Total Pick',
                         data: rankData,
-                        backgroundColor: 'rgba(163, 51, 51, 0.7)',
-                        borderColor: 'rgba(163, 51, 51, 1)',
-                        borderWidth: 1
+                        backgroundColor: 'rgba(220, 38, 38, 0.6)',
+                        borderColor: 'rgba(220, 38, 38, 1)',
+                        borderWidth: 1,
+                        borderRadius: 4
                     }]
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
                     scales: {
-                        y: { beginAtZero: true, grid: { color: '#333' }, ticks: { color: '#bbb' } },
-                        x: { grid: { display: false }, ticks: { color: '#bbb' } }
+                        y: { beginAtZero: true, grid: { color: '#1f2937' }, ticks: { color: '#9ca3af' } },
+                        x: { grid: { display: false }, ticks: { color: '#9ca3af' } }
                     },
                     plugins: { legend: { display: false } }
                 }
             });
 
-            // --- GENERATOR STRATEGI OTOMATIS BERDASARKAN ATRIBUT JIKA BELUM ADA DI DATABASE ---
+            // --- LOGIKA STRATEGI OTOMATIS BERDASARKAN ATRIBUT JIKA BELUM DI INPUT ---
             let strategy = strategyDb[query];
             
             if (!strategy) {
-                // Jika hero tidak ada di list manual, buatkan rekomendasi otomatis berdasarkan role/atribut dari API
                 if (isAgi) {
                     strategy = {
-                        skills: `Hero berbasis Agility dengan serangan tipe ${hero.attack_type}.`,
-                        synergy: "Hero penyedia Buff damage fisik (Magnus, Vengeful Spirit) atau Stunner lama.",
+                        skills: `Hero berbasis Agility dengan tipe damage serangan ${hero.attack_type}.`,
+                        synergy: "Hero dengan Buff Physical Damage (Magnus, Vengeful Spirit) atau heavy stunner.",
                         counters: ["Axe", "Razor", "Lion"],
-                        counters_desc: "Hero disabilitas tinggi (Lion/Hex) atau perusak armor dan pencuri damage (Razor).",
+                        counters_desc: "Hero disabilitas instan (Lion Hex) atau perusak armor dan pencuri physical damage (Razor).",
                         items: ["ghost", "blade_mail", "monkey_king_bar"],
-                        items_desc: "Ghost Scepter (Menahan burst fisik mereka), Blade Mail (Membalikkan damage tinggi), MKB jika mereka punya evasion."
+                        items_desc: "Ghost Scepter (Kebal serangan fisik), Blade Mail (Pantulkan burst damage), MKB jika musuh memiliki evasion."
                     };
                 } else if (isInt) {
                     strategy = {
-                        skills: `Hero berbasis Intelligence dengan serangan tipe ${hero.attack_type}.`,
-                        synergy: "Hero Tanker garis depan (Axe, Centaur) yang bisa melindungi area belakang.",
+                        skills: `Hero berbasis Intelligence dengan tipe output serangan ${hero.attack_type}.`,
+                        synergy: "Hero tank garis depan pelindung area belakang (Axe, Centaur, Tidehunter).",
                         counters: ["Anti-Mage", "Nyx Assassin", "Silencer"],
-                        counters_desc: "Anti-Mage (Mana Void sangat mematikan), Nyx (Mana Burn), Silencer (Mencegah mengeluarkan combo skill).",
+                        counters_desc: "Anti-Mage (Mana Void instan kill), Nyx (Mana Burn konstan), Silencer (Mencegah pengeluaran spell combo).",
                         items: ["black_king_bar", "orchid", "glimmer_cape"],
-                        items_desc: "Black King Bar (Mencegah mereka menggunakan skill magic), Orchid (Silence instan sebelum mereka kombo), Glimmer Cape."
+                        items_desc: "Black King Bar (Mencegah kuncian spell magic), Orchid (Silence musuh sebelum bergerak), Glimmer Cape."
                     };
-                } else { // Strength atau Universal
+                } else {
                     strategy = {
-                        skills: `Hero berbasis Strength/Universal dengan serangan tipe ${hero.attack_type}.`,
-                        synergy: "Hero dengan burst damage tinggi atau Follow-up Crowd Control (Invoker, SF).",
+                        skills: `Hero bertipe Strength / Universal dengan tipe serangan ${hero.attack_type}.`,
+                        synergy: "Hero Crowd Control area luas penunjang follow-up hit (Faceless Void, Enigma).",
                         counters: ["Necrophos", "Timbersaw", "Slark"],
-                        counters_desc: "Necrophos (Reaper's Scythe mematikan untuk HP tebal), Timbersaw (Pure damage penghancur armor Strength), Slark (Mencuri atribut).",
+                        counters_desc: "Necrophos (Scythe pemotong HP tebal), Timbersaw (Pure damage penghancur Armor Strength), Slark (Pencuri stat).",
                         items: ["spirit_vessel", "silver_edge", "skadi"],
-                        items_desc: "Spirit Vessel (Mengurangi HP Regen tebal mereka), Silver Edge (Mematikan kemampuan pasif tank), Eye of Skadi."
+                        items_desc: "Spirit Vessel (Mengurangi regenerasi HP tebal), Silver Edge (Mematikan kemampuan pasif pertahanan), Eye of Skadi."
                     };
                 }
             }
 
-            // Tampilkan Data ke HTML
             document.getElementById('heroSkills').innerText = strategy.skills;
             document.getElementById('heroSynergy').innerText = strategy.synergy;
             document.getElementById('heroCounters').innerText = strategy.counters_desc;
             document.getElementById('itemCounters').innerText = strategy.items_desc;
 
-            // Foto Hero Counter
+            // Render Foto Hero Counter
             const heroCounterBox = document.getElementById('heroCountersImages');
             heroCounterBox.innerHTML = '';
             strategy.counters.forEach(cName => {
@@ -153,22 +158,24 @@ async function searchHero() {
                     const img = document.createElement('img');
                     img.src = `https://cdn.cloudflare.steamstatic.com${targetHero.img}`;
                     img.title = targetHero.localized_name;
+                    img.className = "h-11 w-auto rounded border border-gray-700 shadow";
                     heroCounterBox.appendChild(img);
                 }
             });
 
-            // Foto Item Counter
+            // Render Foto Item Counter
             const itemCounterBox = document.getElementById('itemCountersImages');
             itemCounterBox.innerHTML = '';
             strategy.items.forEach(itemName => {
                 const img = document.createElement('img');
                 img.src = `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/${itemName}.png`;
                 img.title = itemName.replace('_', ' ');
+                img.className = "h-11 w-auto rounded border border-gray-700 shadow";
                 itemCounterBox.appendChild(img);
             });
 
         } else {
-            alert("Hero tidak ditemukan! Gunakan ejaan bahasa Inggris resmi.");
+            alert("Hero tidak ditemukan! Gunakan ejaan resmi Inggris (Misal: Night Stalker, Shadow Fiend).");
         }
     } catch (error) {
         console.error(error);
