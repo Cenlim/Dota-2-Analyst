@@ -1,0 +1,50 @@
+{
+  "axe": {
+    "skills": "Berserker's Call, Battle Hunger, Counter Helix, Culling Blade.",
+    "synergy": "Dazzle, Invoker, Dark Seer.",
+    "counters": ["Outworld Destroyer", "Viper", "Necrophos"],
+    "counters_desc": "Outworld Destroyer (Astral saat Axe Call), Viper (Break pasif Helix), Necrophos (Reaper's Scythe).",
+    "items": ["euls_scepter", "silver_edge", "spirit_vessel"],
+    "items_desc": "Eul's Scepter (Hentikan Axe saat Call), Silver Edge (Matikan pasif Helix), Spirit Vessel."
+  },
+  "phantom assassin": {
+    "skills": "Stifling Dagger, Phantom Strike, Blur, Fan of Knives, Coup de Grace.",
+    "synergy": "Magnus, Crystal Maiden, Omniknight.",
+    "counters": ["Razor", "Axe", "Timbersaw"],
+    "counters_desc": "Razor (Static Link curi damage), Axe (Call menembus Blur), Timbersaw (Burst magic tinggi).",
+    "items": ["monkey_king_bar", "ghost", "blade_mail"],
+    "items_desc": "Monkey King Bar (Bypass Miss Blur), Ghost Scepter (Anti Physical), Blade Mail."
+  },
+  "anti-mage": {
+    "skills": "Mana Break, Blink, Counterspell, Mana Void.",
+    "synergy": "Magnus, Grimstroke, Lion.",
+    "counters": ["Legion Commander", "Meepo", "Disruptor"],
+    "counters_desc": "Legion Commander (Duel langsung kunci Blink), Meepo (Earthbind mengunci Blink), Disruptor (Static Storm + Glimpse).",
+    "items": ["orchid", "bloodthorn", "sheepstick"],
+    "items_desc": "Orchid Malevolence / Bloodthorn (Silence agar tidak bisa Blink), Scythe of Vyse / Sheepstick (Hex instan)."
+  },
+  "invoker": {
+    "skills": "Quas, Wex, Exort, Invoke (10 Kombinasi Kombinasi Skill Aktif).",
+    "synergy": "Faceless Void, Tidehunter, Enigma.",
+    "counters": ["Nyx Assassin", "Anti-Mage", "Viper"],
+    "counters_desc": "Nyx Assassin (Mana Burn & Spiked Carapace), Anti-Mage (Mana Void sakit saat mana Invoker sekarat), Viper.",
+    "items": ["black_king_bar", "pipe", "orchid"],
+    "items_desc": "Black King Bar (BKB memblokir semua burst magic), Pipe of Insight, Orchid Malevolence."
+  },
+  "night stalker": {
+    "skills": "Void, Crippling Fear, Hunter in the Night, Dark Ascension.",
+    "synergy": "Dark Seer, Keeper of the Light, Bounty Hunter.",
+    "counters": ["Slark", "Bloodseeker", "Timbersaw"],
+    "counters_desc": "Slark (Bisa meloloskan diri dengan Pounce/Ulti saat malam), Bloodseeker (Thirst mendeteksi NS), Timbersaw (Pure burst damage tinggi).",
+    "items": ["force_staff", "ghost", "heaven_halberd"],
+    "items_desc": "Force Staff (Kabur dari area Crippling Fear), Ghost Scepter (Hindari serangan fisik malam hari), Heaven's Halberd."
+  },
+  "pudge": {
+    "skills": "Meat Hook, Rot, Flesh Heap, Dismember.",
+    "synergy": "Techies, Crystal Maiden, Rubick.",
+    "counters": ["Lifestealer", "Timbersaw", "Outworld Destroyer"],
+    "counters_desc": "Lifestealer (Feast mencuri HP tebal Pudge), Timbersaw (Pure damage dari Whirling Death potong Stat Str), Outworld Destroyer (Astral untuk save teman dari Dismember).",
+    "items": ["force_staff", "black_king_bar", "eternal_shroud"],
+    "items_desc": "Force Staff (Lepas dari Rot/Hook), Black King Bar (Immune Magic damage Rot), Eternal Shroud / Pipe (Block burst magic)."
+  }
+}
