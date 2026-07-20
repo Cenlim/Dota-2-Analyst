@@ -47,4 +47,285 @@
     "items": ["force_staff", "black_king_bar", "eternal_shroud"],
     "items_desc": "Force Staff (Lepas dari Rot/Hook), Black King Bar (Immune Magic damage Rot), Eternal Shroud / Pipe (Block burst magic)."
   }
-}
+},
+"juggernaut": {
+    "skills": "Blade Fury, Healing Ward, Blade Dance, Omnislash, Swiftslash.",
+    "synergy": "Crystal Maiden, Shadow Shaman, Magnus.",
+    "counters": ["Ghost Marci", "Axe", "Windranger"],
+    "counters_desc": "Axe (Call menembus Blade Fury dan memaksa Jugg menyerang), Windranger (Windrun menghindari Omnislash), Slark (Bisa meloloskan diri).",
+    "items": ["ghost", "aeon_disk", "shadow_blade"],
+    "items_desc": "Ghost Scepter (Kebal penuh dari damage Omnislash), Aeon Disk (Menahan burst Omnislash saat sekarat), Eul's Scepter."
+  },
+  "phantom lancer": {
+    "skills": "Spirit Lance, Doppelganger, Phantom Rush, Juxtapose.",
+    "synergy": "Keeper of the Light, Bloodseeker, Earthshaker.",
+    "counters": ["Earthshaker", "Sven", "Leshrac"],
+    "counters_desc": "Earthshaker (Echo Slam memanfaatkan ilusi untuk burst damage masif), Sven (Great Cleave menghabisi ilusi dengan cepat), Leshrac.",
+    "items": ["crimson_guard", "mjollnir", "shivas_guard"],
+    "items_desc": "Crimson Guard (Block damage konstan dari ilusi), Mjollnir (Chain lightning sangat efektif membersihkan ilusi), Shiva's Guard."
+  },
+  "slark": {
+    "skills": "Dark Pact, Pounce, Essence Shift, Shadow Dance, Depth Shroud.",
+    "synergy": "Omniknight, Io, Dark Seer.",
+    "counters": ["Bloodseeker", "Axe", "Leshrac"],
+    "counters_desc": "Bloodseeker (Thirst membatalkan regen pasif Shadow Dance jika HP Slark rendah), Axe (Call mengunci Slark tanpa bisa Dark Pact).",
+    "items": ["ghost", "heaven_halberd", "orchid"],
+    "items_desc": "Ghost Scepter (Menahan curian stat fisik), Heaven's Halberd (Disarm agar tidak bisa hit), Orchid (Silence sebelum dia mengaktifkan Dark Pact)."
+  },
+  "shadow fiend": {
+    "skills": "Shadowraze (Near/Medium/Far), Necromastery, Feast of Souls, Presence of the Dark Lord, Requiem of Souls.",
+    "synergy": "Faceless Void, Tidehunter, Clockwerk.",
+    "counters": ["Templar Assassin", "Tinker", "Nyx Assassin"],
+    "counters_desc": "Templar Assassin (Refraction memblokir burst Shadowraze), Nyx Assassin (Spiked Carapace memantulkan damage Requiem).",
+    "items": ["black_king_bar", "blade_mail", "lotus_orb"],
+    "items_desc": "Black King Bar (BKB memblokir seluruh damage magic Shadowraze & Requiem), Blade Mail (Membalikkan damage burst jika dia Ulti dekatmu)."
+  },
+  "faceless void": {
+    "skills": "Time Walk, Time Dilation, Time Lock, Chronosphere.",
+    "synergy": "Invoker, Witch Doctor, Snapfire.",
+    "counters": ["Wraith King", "Shadow Demon", "Outworld Destroyer"],
+    "counters_desc": "Shadow Demon / OD (Bisa menyelamatkan target di dalam Chronosphere menggunakan Disruption/Astral), Wraith King (Punya Reincarnation).",
+    "items": ["aeon_disk", "ghost", "heaven_halberd"],
+    "items_desc": "Aeon Disk (Otomatis aktif di dalam Chronosphere untuk menyelamatkanmu), Ghost Scepter (Anti serangan fisik Void)."
+  },
+"sniper": {
+    "skills": "Shrapnel, Headshot, Take Aim, Assassinate.",
+    "synergy": "Ogre Magi, Drow Ranger, Clockwerk.",
+    "counters": ["Spectre", "Storm Spirit", "Clockwerk"],
+    "counters_desc": "Spectre (Haunt langsung menempel di belakang Sniper), Storm Spirit (Ball Lightning melewati garis depan langsung ke Sniper), Clockwerk (Hookshot dan Cogs mengunci posisi).",
+    "items": ["blink", "blade_mail", "ghost"],
+    "items_desc": "Blink Dagger (Untuk menutup jarak dengan cepat karena Sniper lemah dalam jarak dekat), Blade Mail (Membalikkan damage jarak jauhnya), Ghost Scepter."
+  },
+  "crystal maiden": {
+    "skills": "Crystal Nova, Frostbite, Arcane Aura, Freezing Field.",
+    "synergy": "Juggernaut, Ursa, Sven.",
+    "counters": ["Clockwerk", "Silencer", "Rubick"],
+    "counters_desc": "Clockwerk (Battery Assault membatalkan Freezing Field dengan mudah), Silencer (Global Silence mematikan Ulti), Rubick (Sangat mudah mencuri Freezing Field).",
+    "items": ["black_king_bar", "orchid", "glimmer_cape"],
+    "items_desc": "Black King Bar / Glimmer Cape (Gunakan untuk membatalkan Freezing Field miliknya jika dia menyembunyikan diri), Orchid (Silence instan sebelum dia kombo)."
+  },
+  "ursa": {
+    "skills": "Earthshock, Overpower, Fury Swipes, Enrage.",
+    "synergy": "Shadow Shaman, Lion, Io.",
+    "counters": ["Venomancer", "Viper", "Windranger"],
+    "counters_desc": "Venomancer / Viper (Keduanya memiliki kiting/slow yang sangat kuat sehingga Ursa tidak bisa menempel), Windranger (Windrun 100% menghindar dari hit).",
+    "items": ["ghost", "heaven_halberd", "force_staff"],
+    "items_desc": "Ghost Scepter (Ursa tidak bisa memukulmu saat aktif), Heaven's Halberd (Disarm saat dia mengaktifkan Overpower/Enrage), Force Staff (Menjauh dari jangkauannya)."
+  },
+  "lion": {
+    "skills": "Earth Spike, Hex, Mana Drain, Finger of Death.",
+    "synergy": "Anti-Mage, Phantom Assassin, Ursa.",
+    "counters": ["Rubick", "Lifestealer", "Abaddon"],
+    "counters_desc": "Rubick (Bisa mencuri Hex atau Finger of Death dengan instan), Lifestealer (Rage memblokir semua disabilitas Lion), Abaddon (Aphotic Shield menghapus stun/hex pada teman).",
+    "items": ["black_king_bar", "lotus_orb", "linkens_sphere"],
+    "items_desc": "Black King Bar (Mencegah burst magic dan kuncian instan), Lotus Orb (Membalikkan Hex/Finger kembali ke Lion), Linken's Sphere."
+  },
+  "rubick": {
+    "skills": "Telekinesis, Fade Bolt, Arcane Supremacy, Spell Steal.",
+    "synergy": "Magnus, Enigma, Faceless Void.",
+    "counters": ["Silencer", "Riki", "Phantom Assassin"],
+    "counters_desc": "Silencer (Global Silence mengacaukan rotasi spell steal), Riki (Smoke Screen membuat Rubick tidak bisa mengeluarkan skill), PA (Bisa melakukan burst instan sebelum Rubick bereaksi).",
+    "items": ["orchid", "black_king_bar", "nullifier"],
+    "items_desc": "Orchid Malevolence (Kunci dia agar tidak bisa mencuri spell penting), Black King Bar (Mengurangi efektivitas damage spell curiannya)."
+  },
+"centaur warrunner": {
+    "skills": "Hoof Stomp, Double Edge, Retaliate, Work Horse, Stampede.",
+    "synergy": "Lina, Leshrac, Crystal Maiden.",
+    "counters": ["Lifestealer", "Necrophos", "Timbersaw"],
+    "counters_desc": "Lifestealer (Feast menggerogoti HP raksasa Centaur), Necrophos (Reaper's Scythe memotong HP tebal dengan instan), Timbersaw (Whirling Death mengurangi stat Strength konstan).",
+    "items": ["spirit_vessel", "silver_edge", "eye_of_skadi"],
+    "items_desc": "Spirit Vessel (Mengurangi efektivitas HP regen dan membakar HP tebalnya), Silver Edge (Mematikan pasif Retaliate), Eye of Skadi."
+  },
+  "tidehunter": {
+    "skills": "Gush, Kraken Shell, Anchor Smash, Ravage.",
+    "synergy": "Invoker, SF, Kunkka.",
+    "counters": ["Slark", "Outworld Destroyer", "Rubick"],
+    "counters_desc": "Slark (Bisa mencuri stat panjang selama Tide bertahan hidup), Outworld Destroyer (Astral menyembunyikan teman dari Ravage), Rubick (Sangat mudah mencuri Ravage).",
+    "items": ["black_king_bar", "lotus_orb", "orchid"],
+    "items_desc": "Black King Bar (Mencegah pengurangan damage dari Anchor Smash), Lotus Orb (Membalikkan Gush target tunggal), Orchid (Silence sebelum Ravage keluar)."
+  },
+  "slardar": {
+    "skills": "Guardian Sprint, Slithereen Crush, Bash of the Deep, Corrosive Haze.",
+    "synergy": "Lifestealer, Phantom Assassin, Windranger.",
+    "counters": ["Abaddon", "Omniknight", "Naga Siren"],
+    "counters_desc": "Abaddon / Omniknight (Bisa menghapus debuff Corrosive Haze dari rekan tim), Naga Siren (Ilusi membuat Slardar bingung mencari target Corrosive Haze).",
+    "items": ["ghost", "crimson_guard", "lotus_orb"],
+    "items_desc": "Ghost Scepter (Mencegah Slardar memukul saat kamu terkena stun/haze), Crimson Guard (Menahan physical damage dari pukulannya), Lotus Orb (Menghapus Corrosive Haze)."
+  },
+  "mars": {
+    "skills": "Spear of Mars, God's Rebuke, Bulwark, Arena of Blood.",
+    "synergy": "Phoenix, Snapfire, Witch Doctor.",
+    "counters": ["Lifestealer", "Timbersaw", "Outworld Destroyer"],
+    "counters_desc": "Lifestealer (Rage membuatnya bisa berjalan menembus dinding Arena of Blood), Timbersaw (Pure damage mengabaikan armor tebal Bulwark), OD (Bisa keluar arena dengan Astral).",
+    "items": ["silver_edge", "desolator", "black_king_bar"],
+    "items_desc": "Silver Edge (Mematikan pasif Bulwark dari depan), Desolator (Membantu menembus armor fisiknya jika dipukul dari belakang), BKB."
+  },
+  "timbersaw": {
+    "skills": "Whirling Death, Timber Chain, Reactive Armor, Flamethrower, Chakram.",
+    "synergy": "Keeper of the Light, Crystal Maiden, Lich.",
+    "counters": ["Keeper of the Light", "Skywrath Mage", "Doom"],
+    "counters_desc": "Keeper of the Light (Chakra Magic + Mana Leak menguras mananya), Skywrath Mage (Silence lama dan burst magic tinggi sebelum armor terkumpul), Doom (Mengunci semua skill).",
+    "items": ["orchid", "spirit_vessel", "black_king_bar"],
+    "items_desc": "Orchid Malevolence / Bloodthorn (Silence agar tidak bisa Timber Chain untuk kabur), Spirit Vessel (Mengurangi HP regen dari pasif Reactive Armor), BKB."
+  },
+"magnus": {
+    "skills": "Shockwave, Empower, Skewer, Reverse Polarity, Horn Toss.",
+    "synergy": "Phantom Assassin, Juggernaut, Ember Spirit.",
+    "counters": ["Rubick", "Silencer", "Outworld Destroyer"],
+    "counters_desc": "Rubick (Sangat mudah mencuri Reverse Polarity dari jarak aman), Silencer (Global Silence membatalkan inisiasi RP), Outworld Destroyer (Astral untuk menyelamatkan rekan yang terkena RP).",
+    "items": ["linkens_sphere", "black_king_bar", "aeon_disk"],
+    "items_desc": "Linken's Sphere (Menahan Skewer atau Horn Toss target tunggal), Black King Bar (Mencegah terkena disabilitas sebelum sempat menyebar), Aeon Disk."
+  },
+  "bristleback": {
+    "skills": "Viscous Nasal Goo, Quill Spray, Bristleback, Hair Trigger, Warpath.",
+    "synergy": "Keeper of the Light, Io, Dazzle.",
+    "counters": ["Viper", "Silver Edge Carriers", "Slark"],
+    "counters_desc": "Viper (Nethertoxin memberikan efek Break yang mematikan pasif durabilitas Bristleback), Slark (Mencuri stat saat memukul dari belakang).",
+    "items": ["silver_edge", "spirit_vessel", "eye_of_skadi"],
+    "items_desc": "Silver Edge (Item wajib untuk mengaktifkan efek Break pada pasifnya), Spirit Vessel (Mengurangi Spell Lymp dan HP regen), Eye of Skadi."
+  },
+  "legion commander": {
+    "skills": "Overwhelming Odds, Press the Attack, Moment of Courage, Duel.",
+    "synergy": "Skywrath Mage, Invoker, Io.",
+    "counters": ["Outworld Destroyer", "Shadow Demon", "Winter Wyvern"],
+    "counters_desc": "Outworld Destroyer / Shadow Demon (Menyembunyikan target yang di-Duel), Winter Wyvern (Cold Embrace menyelamatkan target Duel dari physical damage).",
+    "items": ["linkens_sphere", "aeon_disk", "lotus_orb"],
+    "items_desc": "Linken's Sphere (Memblokir target instan Duel), Aeon Disk (Menahan burst damage saat kamu yang terkena Duel), Lotus Orb."
+  },
+  "doom": {
+    "skills": "Devour, Scorched Earth, Infernal Blade, Doom.",
+    "synergy": "Grimstroke, Shadow Demon, Lich.",
+    "counters": ["Wraith King", "Abaddon", "Linken Carriers"],
+    "counters_desc": "Wraith King (Reincarnation membuatnya hidup kembali setelah mati oleh Doom), Abaddon (Borrowed Time otomatis aktif meskipun terkena status Doom).",
+    "items": ["linkens_sphere", "lotus_orb", "aeon_disk"],
+    "items_desc": "Linken's Sphere (Memblokir target utama spell Doom), Lotus Orb (Membuat Doom terkena spell-nya sendiri jika dia nekat menggunakan target tunggal), Aeon Disk."
+  },
+  "brewmaster": {
+    "skills": "Thunder Clap, Cinder Brew, Drunken Brawler, Primal Split.",
+    "synergy": "Storm Spirit, Ember Spirit, Void Spirit.",
+    "counters": ["Silencer", "Skywrath Mage", "Death Prophet"],
+    "counters_desc": "Silencer / Skywrath Mage (Instan Silence mencegah Brewmaster mengaktifkan Primal Split saat HP kritis), Lion (Mana Drain instan menghancurkan salah satu elemen).",
+    "items": ["orchid", "black_king_bar", "nullifier"],
+    "items_desc": "Orchid Malevolence / Bloodthorn (Silence konstan sebelum dia membelah diri), Black King Bar (Menahan slow dari Cinder Brew dan debuff alkohol)."
+  },
+"storm spirit": {
+    "skills": "Static Remnant, Electric Vortex, Overload, Ball Lightning.",
+    "synergy": "Lifestealer, Faceless Void, Bloodseeker.",
+    "counters": ["Anti-Mage", "Silencer", "Skywrath Mage"],
+    "counters_desc": "Anti-Mage (Mana Void sangat mematikan karena Storm menggunakan banyak mana), Silencer (Global Silence menghentikan lompatan Ball Lightning instan).",
+    "items": ["orchid", "scythe_of_vyse", "black_king_bar"],
+    "items_desc": "Orchid Malevolence / Bloodthorn (Silence agar Storm tidak bisa melompat kabur), Scythe of Vyse (Hex instan tanpa celah BKB), BKB."
+  },
+  "shadow fiend": {
+    "skills": "Shadowraze, Necromastery, Feast of Souls, Presence of the Dark Lord, Requiem of Souls.",
+    "synergy": "Faceless Void, Tidehunter, Clockwerk.",
+    "counters": ["Templar Assassin", "Tinker", "Nyx Assassin"],
+    "counters_desc": "Templar Assassin (Refraction memblokir burst raze), Nyx Assassin (Spiked Carapace memantulkan damage burst Requiem).",
+    "items": ["black_king_bar", "blade_mail", "lotus_orb"],
+    "items_desc": "Black King Bar (Mencegah burst magic raze), Blade Mail (Membalikkan damage jika dia melepaskan Requiem tepat di dekatmu)."
+  },
+  "ember spirit": {
+    "skills": "Searing Chains, Sleight of Fist, Flame Guard, Fire Remnant.",
+    "synergy": "Magnus, Grimstroke, Faceless Void.",
+    "counters": ["Faceless Void", "Silencer", "Legion Commander"],
+    "counters_desc": "Faceless Void (Chronosphere mengunci pergerakan Remnant), Legion Commander (Duel instan sebelum Ember sempat melompat ke Remnant cadangan).",
+    "items": ["orchid", "sheepstick", "rod_of_atos"],
+    "items_desc": "Orchid / Bloodthorn (Silence sangat efektif mematikan kelincahannya), Scythe of Vyse / Sheepstick (Hex instan), Gleipnir / Atos."
+  },
+  "puck": {
+    "skills": "Illusory Orb, Waning Rift, Phase Shift, Dream Coil.",
+    "synergy": "Lich, Faceless Void, Enigma.",
+    "counters": ["Templar Assassin", "Night Stalker", "Silencer"],
+    "counters_desc": "Night Stalker (Crippling Fear memberikan AoE silence yang mengikuti pergerakan, membuat Puck lumpuh), Silencer (Mencegah Phase Shift).",
+    "items": ["orchid", "sheepstick", "nullifier"],
+    "items_desc": "Orchid Malevolence (Memaksa Puck membeli Eul/BKB lebih cepat), Scythe of Vyse (Kunci instan sebelum Phase Shift), Nullifier (Menghapus buff pertahanan)."
+  },
+  "queen of pain": {
+    "skills": "Shadow Strike, Blink, Scream of Pain, Sonic Wave.",
+    "synergy": "Faceless Void, Treant Protector, Ares.",
+    "counters": ["Anti-Mage", "Puck", "Night Stalker"],
+    "counters_desc": "Anti-Mage (Mana Break dan Counterspell memblokir Shadow Strike), Puck (Bisa menghindari Sonic Wave menggunakan Phase Shift dengan mudah).",
+    "items": ["orchid", "black_king_bar", "sheepstick"],
+    "items_desc": "Orchid / Bloodthorn (Silence instan untuk mengunci skill Blink-nya), Black King Bar (Menahan burst magic Scream dan Sonic Wave)."
+  },
+"tinker": {
+    "skills": "Laser, Heat-Seeking Missile, Warp Flare, Keen Conveyor, Rearm.",
+    "synergy": "Bounty Hunter, Clockwerk, Beastmaster.",
+    "counters": ["Clockwerk", "Storm Spirit", "Spectre"],
+    "counters_desc": "Clockwerk (Hookshot dari jarak sangat jauh menghentikan Rearm), Storm Spirit (Mudah memburu Tinker ke area pepohonan), Spectre (Haunt mendeteksi posisi sembunyi Tinker).",
+    "items": ["orchid", "nullifier", "black_king_bar"],
+    "items_desc": "Orchid Malevolence (Menghentikan combo Rearm), Nullifier (Menghapus efek Blink/Eul defensive Tinker), BKB."
+  },
+  "void spirit": {
+    "skills": "Aether Remnant, Dissimilate, Resonant Pulse, Astral Step.",
+    "synergy": "Faceless Void, Mars, Treant Protector.",
+    "counters": ["Silencer", "Night Stalker", "Meepo"],
+    "counters_desc": "Silencer (Global Silence mematikan seluruh skill escape), Night Stalker (AoE Silence dari Crippling Fear membuatnya tidak bisa Dissimilate), Meepo (Root mengunci Astral Step).",
+    "items": ["orchid", "scythe_of_vyse", "rod_of_atos"],
+    "items_desc": "Orchid / Bloodthorn (Silence instan sebelum dia melompat), Scythe of Vyse (Hex target tunggal untuk burst instan), Rod of Atos."
+  },
+  "kunkka": {
+    "skills": "Torrent, Tidebringer, X Marks the Spot, Ghostship, Torrent Storm.",
+    "synergy": "Dark Seer, Jakiro, Disruptor.",
+    "counters": ["Sniper", "Lifestealer", "Outworld Destroyer"],
+    "counters_desc": "Sniper (Bisa menembak aman di luar jarak Torrent/Ghostship), Lifestealer (Rage mengabaikan semua disable Kunkka), OD (Astral menyelamatkan teman dari kombo X-Mark).",
+    "items": ["black_king_bar", "force_staff", "euls_scepter"],
+    "items_desc": "Black King Bar (Item wajib untuk memblokir damage magic Torrent & Rum debuff), Force Staff (Keluar dari area Torrent Storm), Eul's (Gunakan pada diri sendiri saat di-X-Mark)."
+  },
+  "lina": {
+    "skills": "Dragon Slave, Light Strike Array, Fiery Soul, Laguna Blade.",
+    "synergy": "Centaur Warrunner, Shadow Shaman, Bane.",
+    "counters": ["Anti-Mage", "Nyx Assassin", "Spectre"],
+    "counters_desc": "Anti-Mage (Counterspell bisa membalikkan Laguna Blade), Nyx Assassin (Spiked Carapace memantulkan burst damage besar), Spectre (Mendekati Lina yang rapuh dengan mudah).",
+    "items": ["black_king_bar", "glimmer_cape", "blade_mail"],
+    "items_desc": "Black King Bar (Menahan burst magic murni), Glimmer Cape (Mengurangi damage Laguna Blade secara signifikan), Blade Mail."
+  },
+  "templer assassin": {
+    "skills": "Refraction, Meld, Psi Blades, Psionic Trap.",
+    "synergy": "Magnus, Slardar, Dazzle.",
+    "counters": ["Venomancer", "Viper", "Jakiro"],
+    "counters_desc": "Venomancer / Viper / Jakiro (Semua hero yang memiliki damage-over-time atau racun berkala sangat cepat menghancurkan lapisan shield Refraction milik TA).",
+    "items": ["radiance", "spirit_vessel", "urn_of_shadows"],
+    "items_desc": "Radiance (Damage bakar per detik otomatis menghabiskan Refraction), Spirit Vessel / Urn (Memberikan burn damage konstan untuk mematikan shield-nya)."
+  },
+"zeus": {
+    "skills": "Arc Lightning, Lightning Bolt, Heavenly Jump, Thundergod's Wrath, Nimbus.",
+    "synergy": "Bloodseeker, Spectre, Faceless Void.",
+    "counters": ["Anti-Mage", "Templar Assassin", "Storm Spirit"],
+    "counters_desc": "Anti-Mage (Mana Void instan kill saat mana Zeus habis), Templar Assassin (Refraction memblokir burst magic nimbus/ulti), Storm Spirit.",
+    "items": ["black_king_bar", "pipe", "eternal_shroud"],
+    "items_desc": "Black King Bar (Memblokir seluruh burst global magic), Pipe of Insight (Membantu shield magic untuk satu tim), Eternal Shroud."
+  },
+  "pemberontak_void_spirit": {
+    "skills": "Aether Remnant, Dissimilate, Resonant Pulse, Astral Step.",
+    "synergy": "Faceless Void, Mars, Treant Protector.",
+    "counters": ["Silencer", "Night Stalker", "Meepo"],
+    "counters_desc": "Silencer (Global Silence mematikan skill escape), Night Stalker (AoE Silence), Meepo (Root mengunci Astral Step).",
+    "items": ["orchid", "scythe_of_vyse", "rod_of_atos"],
+    "items_desc": "Orchid / Bloodthorn (Silence sebelum melompat), Scythe of Vyse (Hex target tunggal), Rod of Atos."
+  },
+  "outworld destroyer": {
+    "skills": "Arcane Orb, Astral Imprisonment, Essence Flux, Sanity's Eclipse.",
+    "synergy": "Omniknight, Treant Protector, Ares.",
+    "counters": ["Nyx Assassin", "Silencer", "Rubick"],
+    "counters_desc": "Nyx Assassin (Spiked Carapace memantulkan burst besar Orb), Silencer (Mencegah perputaran spell mana), Rubick (Bisa mencuri Astral/Ulti).",
+    "items": ["black_king_bar", "orchid", "linkens_sphere"],
+    "items_desc": "Black King Bar (Item wajib untuk memblokir Pure Damage dari Arcane Orb), Orchid Malevolence, Linken's Sphere."
+  },
+  "razor": {
+    "skills": "Plasma Field, Static Link, Storm Surge, Eye of the Storm.",
+    "synergy": "Slardar, Faceless Void, Shadow Shaman.",
+    "counters": ["Viper", "Outworld Destroyer", "Sniper"],
+    "counters_desc": "Viper (Nethertoxin memberikan efek Break pada Storm Surge), Outworld Destroyer (Astral target saat Static Link aktif), Sniper (Tembak dari jarak aman).",
+    "items": ["force_staff", "heaven_halberd", "silver_edge"],
+    "items_desc": "Force Staff / Hurricane Pike (Memutuskan rantai Static Link dengan cepat), Heaven's Halberd (Disarm physical hit), Silver Edge."
+  },
+  "puck_dua": {
+    "skills": "Illusory Orb, Waning Rift, Phase Shift, Dream Coil.",
+    "synergy": "Lich, Faceless Void, Enigma.",
+    "counters": ["Night Stalker", "Silencer", "Skywrath Mage"],
+    "counters_desc": "Night Stalker (Crippling Fear AoE silence konstan), Silencer (Mencegah Phase Shift), Skywrath Mage (Instant Silence).",
+    "items": ["orchid", "sheepstick", "nullifier"],
+    "items_desc": "Orchid Malevolence (Kunci pergerakan lincah), Scythe of Vyse (Hex instan tanpa celah), Nullifier."
+  },
+
