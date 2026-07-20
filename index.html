@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dota 2 Hero & Item Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dota 2 Analyzer</h1>
+        
+        <!-- Search Bar Awal -->
+        <div class="search-box">
+            <input type="text" id="heroSearch" placeholder="Cari nama hero (misal: Axe, Invoker)...">
+            <button id="searchBtn">Search</button>
+        </div>
+
+        <!-- Wadah Hasil Pencarian (Disembunyikan di awal) -->
+        <div id="resultContainer" class="hidden">
+            <div class="hero-header">
+                <img id="heroImage" src="" alt="Hero Image">
+                <div class="hero-identity">
+                    <h2 id="heroName"></h2>
+                    <span id="heroType"></span>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <!-- Kolom Skill -->
+                <div class="info-card">
+                    <h3>Skills</h3>
+                    <div id="heroSkills" class="list-content"></div>
+                </div>
+
+                <!-- Kolom Sinergi / Pendukung -->
+                <div class="info-card synergy">
+                    <h3>Best Synergy (Didukung oleh)</h3>
+                    <div id="heroSynergy" class="list-content"></div>
+                </div>
+
+                <!-- Kolom Counter Hero -->
+                <div class="info-card counters">
+                    <h3>Countered By (Mudah mati oleh)</h3>
+                    <div id="heroCounters" class="list-content"></div>
+                </div>
+
+                <!-- Kolom Counter Item -->
+                <div class="info-card item-counters">
+                    <h3>Counter Items (Bikin hero ini gak berguna)</h3>
+                    <div id="itemCounters" class="list-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
