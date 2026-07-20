@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dota 2 Hero & Item Analyzer</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Load Chart.js untuk grafik -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>Dota 2 Analyzer</h1>
         
-        <!-- Search Bar Awal -->
         <div class="search-box">
-            <input type="text" id="heroSearch" placeholder="Cari nama hero (misal: Axe, Invoker)...">
+            <input type="text" id="heroSearch" placeholder="Cari nama hero (misal: Axe, PA, Invoker)...">
             <button id="searchBtn">Search</button>
         </div>
 
-        <!-- Wadah Hasil Pencarian (Disembunyikan di awal) -->
         <div id="resultContainer" class="hidden">
             <div class="hero-header">
                 <img id="heroImage" src="" alt="Hero Image">
@@ -26,29 +26,35 @@
                 </div>
             </div>
 
+            <!-- Bagian Grafik Pick Rate -->
+            <div class="chart-container">
+                <h3>Popularitas Hero per Rank (Total Pick Patch Ini)</h3>
+                <canvas id="rankChart"></canvas>
+            </div>
+
             <div class="info-grid">
-                <!-- Kolom Skill -->
                 <div class="info-card">
                     <h3>Skills</h3>
                     <div id="heroSkills" class="list-content"></div>
                 </div>
 
-                <!-- Kolom Sinergi / Pendukung -->
                 <div class="info-card synergy">
                     <h3>Best Synergy (Didukung oleh)</h3>
                     <div id="heroSynergy" class="list-content"></div>
                 </div>
 
-                <!-- Kolom Counter Hero -->
+                <!-- Counter Hero dengan Foto -->
                 <div class="info-card counters">
                     <h3>Countered By (Mudah mati oleh)</h3>
-                    <div id="heroCounters" class="list-content"></div>
+                    <div id="heroCountersImages" class="image-list"></div>
+                    <div id="heroCounters" class="list-content" style="margin-top: 10px;"></div>
                 </div>
 
-                <!-- Kolom Counter Item -->
+                <!-- Counter Item dengan Foto -->
                 <div class="info-card item-counters">
                     <h3>Counter Items (Bikin hero ini gak berguna)</h3>
-                    <div id="itemCounters" class="list-content"></div>
+                    <div id="itemCountersImages" class="image-list"></div>
+                    <div id="itemCounters" class="list-content" style="margin-top: 10px;"></div>
                 </div>
             </div>
         </div>
