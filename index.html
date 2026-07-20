@@ -4,57 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dota 2 Hero & Item Analyzer</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Load Chart.js untuk grafik -->
+    <!-- Tailwind CSS untuk Desain Premium -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Chart.js untuk Grafik -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f1115; }
+        .dota-title { font-family: 'Cinzel', serif; }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Dota 2 Analyzer</h1>
+<body class="text-gray-200 min-h-screen pb-12">
+    <div class="max-w-5xl mx-auto px-4 pt-12 text-center">
+        <h1 class="dota-title text-4xl md:text-5xl font-bold text-red-600 tracking-wider mb-8 drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)]">Dota 2 Analyzer</h1>
         
-        <div class="search-box">
-            <input type="text" id="heroSearch" placeholder="Cari nama hero (misal: Axe, PA, Invoker)...">
-            <button id="searchBtn">Search</button>
+        <!-- Search Box Modern -->
+        <div class="mb-10 flex justify-center max-w-md mx-auto gap-2">
+            <input type="text" id="heroSearch" placeholder="Cari nama hero (Axe, Night Stalker, PA)..." 
+                   class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-red-600 transition-colors">
+            <button id="searchBtn" class="px-6 py-3 bg-red-700 hover:bg-red-600 rounded-lg text-white font-semibold shadow-lg cursor-pointer transition-all">Search</button>
         </div>
 
-        <div id="resultContainer" class="hidden">
-            <div class="hero-header">
-                <img id="heroImage" src="" alt="Hero Image">
-                <div class="hero-identity">
-                    <h2 id="heroName"></h2>
-                    <span id="heroType"></span>
+        <!-- Hasil Analisis -->
+        <div id="resultContainer" class="hidden text-left bg-gray-950/80 border border-gray-800 rounded-xl p-6 md:p-8 backdrop-blur shadow-2xl">
+            <!-- Header Hero -->
+            <div class="flex items-center gap-6 border-b border-gray-800 pb-6 mb-6">
+                <img id="heroImage" src="" alt="Hero Image" class="w-32 h-auto rounded-lg border border-gray-700 shadow-md">
+                <div>
+                    <h2 id="heroName" class="text-3xl font-bold text-white tracking-wide"></h2>
+                    <span id="heroType" class="inline-block mt-2 text-xs font-semibold px-2.5 py-1 bg-gray-800 rounded text-gray-400"></span>
                 </div>
             </div>
 
-            <!-- Bagian Grafik Pick Rate -->
-            <div class="chart-container">
-                <h3>Popularitas Hero per Rank (Total Pick Patch Ini)</h3>
-                <canvas id="rankChart"></canvas>
+            <!-- Grafik Kontainer -->
+            <div class="bg-gray-900/60 border border-gray-800/80 rounded-lg p-4 mb-8">
+                <h3 class="text-sm font-semibold tracking-wider text-gray-400 mb-4 uppercase">Popularitas Hero per Rank (Total Pick Patch Ini)</h3>
+                <div class="relative h-64 w-full">
+                    <canvas id="rankChart"></canvas>
+                </div>
             </div>
 
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>Skills</h3>
-                    <div id="heroSkills" class="list-content"></div>
+            <!-- Grid Informasi Strategi -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Box Skill -->
+                <div class="bg-gray-900/40 p-5 rounded-lg border-l-4 border-gray-500 bg-linear-to-r from-gray-900/60 to-transparent">
+                    <h3 class="font-bold text-white mb-2 flex items-center gap-2">⚡ Utama Skills</h3>
+                    <div id="heroSkills" class="text-sm text-gray-300 leading-relaxed"></div>
                 </div>
 
-                <div class="info-card synergy">
-                    <h3>Best Synergy (Didukung oleh)</h3>
-                    <div id="heroSynergy" class="list-content"></div>
+                <!-- Box Sinergi -->
+                <div class="bg-gray-900/40 p-5 rounded-lg border-l-4 border-emerald-600 bg-linear-to-r from-emerald-950/20 to-transparent">
+                    <h3 class="font-bold text-emerald-400 mb-2 flex items-center gap-2">🤝 Best Synergy</h3>
+                    <div id="heroSynergy" class="text-sm text-gray-300 leading-relaxed"></div>
                 </div>
 
-                <!-- Counter Hero dengan Foto -->
-                <div class="info-card counters">
-                    <h3>Countered By (Mudah mati oleh)</h3>
-                    <div id="heroCountersImages" class="image-list"></div>
-                    <div id="heroCounters" class="list-content" style="margin-top: 10px;"></div>
+                <!-- Box Counter Hero -->
+                <div class="bg-gray-900/40 p-5 rounded-lg border-l-4 border-red-600 bg-linear-to-r from-red-950/20 to-transparent">
+                    <h3 class="font-bold text-red-400 mb-3 flex items-center gap-2">💀 Countered By</h3>
+                    <div id="heroCountersImages" class="flex gap-2 flex-wrap mb-2"></div>
+                    <div id="heroCounters" class="text-sm text-gray-300 leading-relaxed pt-1"></div>
                 </div>
 
-                <!-- Counter Item dengan Foto -->
-                <div class="info-card item-counters">
-                    <h3>Counter Items (Bikin hero ini gak berguna)</h3>
-                    <div id="itemCountersImages" class="image-list"></div>
-                    <div id="itemCounters" class="list-content" style="margin-top: 10px;"></div>
+                <!-- Box Counter Item -->
+                <div class="bg-gray-900/40 p-5 rounded-lg border-l-4 border-amber-600 bg-linear-to-r from-amber-950/20 to-transparent">
+                    <h3 class="font-bold text-amber-400 mb-3 flex items-center gap-2">📦 Counter Items</h3>
+                    <div id="itemCountersImages" class="flex gap-2 flex-wrap mb-2"></div>
+                    <div id="itemCounters" class="text-sm text-gray-300 leading-relaxed pt-1"></div>
                 </div>
             </div>
         </div>
