@@ -1,66 +1,135 @@
-// Database manual untuk strategi makro (Bisa kamu lengkapi sendiri nanti)
-const strategyDb = {
-    "axe": {
-        skills: "Berserker's Call, Battle Hunger, Counter Helix, Culling Blade.",
-        synergy: "Dazzle (Shallow Grave saat Axe maju), Invoker, Dark Seer (Vacuum ke Call).",
-        counters: "Outworld Destroyer (Astral Imprisonment saat Axe Call), Viper (Break Counter Helix), Necrophos.",
-        items: "Eul's Scepter (Hentikan Axe saat Call), Silver Edge (Matikan pasif Counter Helix), Spirit Vessel."
-    },
-    "phantom assassin": {
-        skills: "Stifling Dagger, Phantom Strike, Blur, Fan of Knives, Coup de Grace.",
-        synergy: "Magnus (Empower), Crystal Maiden (Mana Regen), Omniknight.",
-        counters: "Moriah/Razor (Static Link), Axe (Call menembus Blur), Timbersaw (Burst damage tinggi).",
-        items: "Monkey King Bar (Bypass kelemahan Miss Blur), Ghost Scepter (Anti Physical Hit), Blade Mail."
-    }
-    // Tambahkan data hero lainnya di sini dengan format huruf kecil semua
-};
+body {
+    background-color: #1c1c1c;
+    color: #e5e5e5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
 
-document.getElementById('searchBtn').addEventListener('click', searchHero);
-document.getElementById('heroSearch').addEventListener('keypress', function(e) {
-    if (e.key === 'key') {
-        if (e.key === 'Enter') searchHero();
-    }
-});
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
 
-async function searchHero() {
-    const query = document.getElementById('heroSearch').value.toLowerCase().trim();
-    if (!query) return;
+h1 {
+    color: #a33333;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
 
-    try {
-        // Ambil data resmi dari OpenDota API
-        const response = await fetch('https://api.opendota.com/api/heroStats');
-        const heroes = await response.json();
-        
-        // Cari hero yang cocok
-        const hero = heroes.find(h => h.localized_name.toLowerCase() === query);
+.search-box {
+    margin-bottom: 40px;
+}
 
-        if (hero) {
-            // Tampilkan Container
-            document.getElementById('resultContainer').classList.remove('hidden');
-            
-            // Isi data dari API
-            document.getElementById('heroName').innerText = hero.localized_name;
-            document.getElementById('heroType').innerText = `${hero.primary_attr.toUpperCase()} - ${hero.attack_type}`;
-            document.getElementById('heroImage').src = `https://cdn.cloudflare.steamstatic.com${hero.img}`;
+#heroSearch {
+    padding: 12px 20px;
+    width: 60%;
+    max-width: 400px;
+    border: 2px solid #333;
+    border-radius: 4px;
+    background-color: #2b2b2b;
+    color: #fff;
+    font-size: 16px;
+}
 
-            // Ambil data analisis dari database lokal kita
-            const strategy = strategyDb[query] || {
-                skills: "Data skill belum dimasukkan.",
-                synergy: "Data pendukung belum dianalisis.",
-                counters: "Data counter belum dianalisis.",
-                items: "Data item counter belum dimasukkan."
-            };
+#searchBtn {
+    padding: 12px 25px;
+    background-color: #a33333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+}
 
-            document.getElementById('heroSkills').innerText = strategy.skills;
-            document.getElementById('heroSynergy').innerText = strategy.synergy;
-            document.getElementById('heroCounters').innerText = strategy.counters;
-            document.getElementById('itemCounters').innerText = strategy.items;
+#searchBtn:hover {
+    background-color: #d13f3f;
+}
 
-        } else {
-            alert("Hero tidak ditemukan! Pastikan ejaan bahasa Inggrisnya benar (Contoh: Crystal Maiden).");
-        }
-    } catch (error) {
-        console.error("Gagal mengambil data:", error);
-        alert("Gagal memuat data. Periksa koneksi internetmu.");
-    }
+.hidden {
+    display: none !important;
+}
+
+#resultContainer {
+    background-color: #252525;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.hero-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+#heroImage {
+    width: 120px;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #555;
+}
+
+.chart-container {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    border: 1px solid #333;
+}
+
+.chart-container h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #ccc;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .info-grid { grid-template-columns: 1fr; }
+}
+
+.info-card {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 6px;
+    border-left: 4px solid #555;
+}
+
+.info-card h3 { margin-top: 0; color: #fff; }
+.synergy { border-left-color: #2e7d32; }
+.counters { border-left-color: #c62828; }
+.item-counters { border-left-color: #ef6c00; }
+
+.list-content {
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* Style untuk list gambar counter */
+.image-list {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.image-list img {
+    height: 45px;
+    width: auto;
+    border-radius: 4px;
+    border: 1px solid #444;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
